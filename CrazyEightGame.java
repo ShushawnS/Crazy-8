@@ -10,16 +10,25 @@ public class CrazyEightGame {
         int numPlayers;
 
         numPlayers = Crazy8.initalizeGame(input);
-        System.out.println(numPlayers);
 
         Player[] players = new Player[numPlayers]; 
 
+        //sets player details
         for (int y = 0; y < numPlayers; ++y) {
             players[y] = new Player(y);
-            players[y].setPlayerDetails(input, y);
-        }
+            players[y].setPlayerDetails(input, y); 
 
-        
+            //creates original deck for each player
+            for (int x = 0; x < 5; ++x) {
+                String pulledCard;
+                pulledCard = theDeck.getCard(); 
+
+                players[y].setPlayerDeck(pulledCard); 
+            } 
+
+            players[y].displayPlayerDeck();
+        }          
+
         input.close();
     } 
 
