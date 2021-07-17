@@ -42,17 +42,27 @@ public class CrazyEightGame {
 
         while (roundOn){ 
 
-            System.out.println("The current card is: " + currentCard);
-
+            System.out.println("\n\nThe current card is: " + currentCard);
+             
             for (turnNum = 0; turnNum < numPlayers; ++turnNum) {
-                System.out.println(players[currentPlayerNum].getPlayerName() + "played: ");
-                players[currentPlayerNum].displayPlayerDeck();
-                String mother = players[currentPlayerNum].getPlayedCard();
-                currentPlayerNum++; 
+
+                System.out.print(players[currentPlayerNum].getPlayerName() + " \n\n");
+
+                String[] splitCurrent = currentCard.split("\\s");
+                String playedCard = players[currentPlayerNum].getPlayedCard(splitCurrent[0], splitCurrent[1]);
+                System.out.print("\n\n " + currentCard + " \n\n");
+
+                if (!playedCard.equals("noCard")) {
+                    System.out.println(players[currentPlayerNum].getPlayerName() + " played: " + playedCard);
+                    currentCard = playedCard;
+                }
                 
+                players[currentPlayerNum].displayPlayerDeck();
+                
+                currentPlayerNum++;  
             }
 
-            roundOn = false;
+            //roundOn = false;
         }
         
         

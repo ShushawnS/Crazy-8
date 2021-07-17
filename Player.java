@@ -13,6 +13,7 @@ public class Player {
 
     public void setPlayerDetails (Scanner input, int y) {
         playerNum = y;
+        y = playerNum;
 
         System.out.print("Please enter your name player" + (y+1) + ": ");
         playerName = input.nextLine();
@@ -31,11 +32,22 @@ public class Player {
         return playerName;
     } 
 
-    public String getPlayedCard(){ 
-        for (String s: cardList) {
-            //System.out.println(s); 
+    public String getPlayedCard(String cardSuit, String cardNum){
+        int index = 0;
+
+        for (String s: cardList) { 
+            String[] splitCard = s.split("\\s"); 
+
+            if ( splitCard[0].equals(cardSuit) || splitCard[1].equals(cardNum) ) {
+                cardList.remove(index);
+                return s;  
+            }
+
+            //System.out.println(splitCard[0].equals(cardSuit));
+            
+            index++;
         }
  
-        return "hello";
+        return "noCard";
     }
 }

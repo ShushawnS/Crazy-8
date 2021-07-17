@@ -21,10 +21,10 @@ public class Deck {
     //creates deck
     for (x = 1; x < 13; ++x) {
       //if (x > 1 && x < 9) {
-         heartsList.add("H "+ x); 
-         spadesList.add("S "+ x); 
-         diamondsList.add("D "+ x); 
-         clubsList.add("C "+ x);
+         heartsList.add("Hearts "+ x); 
+         spadesList.add("Spades "+ x); 
+         diamondsList.add("Diamonds "+ x); 
+         clubsList.add("Clubs "+ x);
       //}
       
     }
