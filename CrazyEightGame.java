@@ -32,36 +32,54 @@ public class CrazyEightGame {
             //players[y].displayPlayerDeck(); 
         }   
 
-        int test = Crazy8.choosePlayer(input, players, numPlayers); 
-        System.out.println("Welcome " + players[test].getPlayerName() + ", it is now time to play!");
+        int chosenPlayer = Crazy8.choosePlayer(input, players, numPlayers); 
+        System.out.println("Welcome " + players[chosenPlayer].getPlayerName() + ", it is now time to play!");
         
         String currentCard = theDeck.getCard(); 
         int turnNum = 0; 
-        int currentPlayerNum = 0;
+        int currentPlayerNum = 0; 
+        String[] splitCurrent;
 
 
         while (roundOn){ 
-
-            System.out.println("\n\nThe current card is: " + currentCard);
              
-            for (turnNum = 0; turnNum < numPlayers; ++turnNum) {
+            for (turnNum = 0; turnNum < numPlayers; ++turnNum) { 
+                
 
-                System.out.print(players[currentPlayerNum].getPlayerName() + " \n\n");
+                splitCurrent = currentCard.split("\\s");  
+                //System.out.println("The splitCurrent array length is: " + splitCurrent[3]); 
 
-                String[] splitCurrent = currentCard.split("\\s");
-                String playedCard = players[currentPlayerNum].getPlayedCard(splitCurrent[0], splitCurrent[1]);
-                System.out.print("\n\n " + currentCard + " \n\n");
+                if (currentPlayerNum != chosenPlayer) {
+                    String playedCard = players[currentPlayerNum].getPlayedCard(splitCurrent[0], splitCurrent[1]); 
 
-                if (!playedCard.equals("noCard")) {
-                    System.out.println(players[currentPlayerNum].getPlayerName() + " played: " + playedCard);
-                    currentCard = playedCard;
+                    if (playedCard != "noCard") {
+                        System.out.println(players[currentPlayerNum].getPlayerName() + " played: " + playedCard);
+                        currentCard = playedCard;
+                    } else {
+                        System.out.println(players[currentPlayerNum].getPlayerName() + " played: " + playedCard);
+                    }
+                } else {
+                    System.out.println("\n\nThe current card is: " + currentCard); 
+                    System.out.println("Your deck has the following: "); 
+                    players[currentPlayerNum].displayPlayerDeck(); 
+
+                    int numCards = players[currentPlayerNum].getCardListLength();
+                    int index = 0; 
+
+                    do {
+                        System.out.print("\nPut the index of the card you would like to play: " + numCards); 
+                        index = input.nextInt(); 
+                    } while (index > numCards || index < 0) ;
+                    
+
+                    roundOn = false;
                 }
-                
-                players[currentPlayerNum].displayPlayerDeck();
-                
+                               
                 currentPlayerNum++;  
             }
 
+            currentPlayerNum = 0;
+            System.out.println("Round is completed: " + turnNum);
             //roundOn = false;
         }
         

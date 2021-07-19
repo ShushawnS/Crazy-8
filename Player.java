@@ -30,7 +30,11 @@ public class Player {
 
     public String getPlayerName() {
         return playerName;
-    } 
+    }  
+
+    public int getCardListLength() {
+        return cardList.size();
+    }
 
     public String getPlayedCard(String cardSuit, String cardNum){
         int index = 0;
@@ -38,7 +42,7 @@ public class Player {
         for (String s: cardList) { 
             String[] splitCard = s.split("\\s"); 
 
-            if ( splitCard[0].equals(cardSuit) || splitCard[1].equals(cardNum) ) {
+            if ( splitCard[0].equals(cardSuit) || splitCard[1].equals(cardNum) ) { 
                 cardList.remove(index);
                 return s;  
             }
