@@ -37,6 +37,18 @@ public class Game {
         int userChoice = input.nextInt();
         userChoice--;
         return userChoice;
-    } 
+    }  
+
+    public boolean validSelectedCard( String playedCard, String[] splitCurrent ) {
+        String[] splitPlayed = playedCard.split("\\s");  
+
+        if (splitPlayed[0].equals(splitCurrent[0]) || splitPlayed[1].equals(splitCurrent[1])) { 
+            
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
 
 }

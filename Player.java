@@ -34,6 +34,18 @@ public class Player {
 
     public int getCardListLength() {
         return cardList.size();
+    } 
+
+    public String getSelectCard(int index) {
+        return cardList.get(index);
+    } 
+
+    public void addSelectedCard(String newCard){
+        cardList.add(newCard);
+    }
+
+    public void deleteSelectedCard(int index) {
+        cardList.remove(index);
     }
 
     public String getPlayedCard(String cardSuit, String cardNum){
@@ -53,5 +65,6 @@ public class Player {
         }
  
         return "noCard";
-    }
+    }  
+
 }
