@@ -23,7 +23,7 @@ public class CrazyEightGame {
             players[y].setPlayerDetails(input, y); 
 
             //creates original deck for each player
-            for (int x = 0; x < 5; ++x) {
+            for (int x = 0; x < 5 ; ++x) {
                 pulledCard = theDeck.getCard(); 
 
                 players[y].setPlayerDeck(pulledCard); 
@@ -68,11 +68,12 @@ public class CrazyEightGame {
                     System.out.println("Your deck has the following: ");                         
                     players[currentPlayerNum].displayPlayerDeck(); 
 
-                    int numCards = players[currentPlayerNum].getCardListLength();
+                    int numCards; 
                     int index = 0;  
                     int numDraw = 0;
 
-                    do {
+                    do { 
+                        numCards = players[currentPlayerNum].getCardListLength();
                         System.out.print("\nPut the index of the card you would like to play (1-" + numCards + ") & use 0 to draw a card: "); 
                         index = input.nextInt() - 1; 
 
@@ -96,32 +97,38 @@ public class CrazyEightGame {
                             
                             if (Crazy8.validSelectedCard(playedCard, splitCurrent)) {
                                 players[currentPlayerNum].deleteSelectedCard(index); 
-                                System.out.print("You played: " + playedCard);
+                                System.out.print("You played: " + playedCard); 
+                                currentCard = playedCard;
                             } else {
                                 System.out.print("Invalid Card");
                                 index = -1;
                             }
                             
-                        } 
+                        } else if (index == -2) {
+                            index = 1;
+                        }
 
-                    } while (index > numCards || index < 0) ;
+                    } while (index > numCards || index < 0) ; 
                     
-
-
-                    roundOn = false;
+                    //roundOn = false;
                 }
-                               
+                
+                if (players[currentPlayerNum].getCardListLength() == 0){
+                    //System.out.print("\033[H\033[2J");  
+                    roundOn = false; 
+                    break;
+                }
                 currentPlayerNum++;  
             }
 
             currentPlayerNum = 0; 
             //System.out.print("\033[H\033[2J"); 
-            System.out.println("\n\nRound is completed: " + turnNum); 
+            System.out.println("\n\nRound is completed: " + (turnNum + 1)); 
 
             //roundOn = false;
         }
-        
-        
+
+        Crazy8.countScore(numPlayers, players);
 
         input.close();
     } 

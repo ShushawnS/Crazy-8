@@ -49,6 +49,14 @@ public class Game {
             return false;
         }
         
+    } 
+
+    public void countScore (int numPlayers, Player[] players) {
+        for (int i = 0; i < numPlayers; ++i) { 
+            int playerScore = players[i].getFinalScore();
+
+            System.out.print("\nFinal score for " + players[i].getPlayerName() + ": " + playerScore);
+        }
     }
 
 }

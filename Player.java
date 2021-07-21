@@ -48,7 +48,7 @@ public class Player {
         cardList.remove(index);
     }
 
-    public String getPlayedCard(String cardSuit, String cardNum){
+    public String getPlayedCard(String cardSuit, String cardNum) {
         int index = 0;
 
         for (String s: cardList) { 
@@ -65,6 +65,23 @@ public class Player {
         }
  
         return "noCard";
-    }  
+    } 
+    
+    public int getFinalScore() {
+
+        int finalScore = 0;
+
+        if (cardList.size() > 0) { 
+            for (String s: cardList) { 
+                String[] splitCard = s.split("\\s"); 
+                
+                finalScore += Integer.parseInt(splitCard[1]);
+            } 
+
+            return finalScore;
+        } else {
+            return 0;
+        }
+    }
 
 }
