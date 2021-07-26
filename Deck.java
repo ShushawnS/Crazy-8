@@ -1,12 +1,10 @@
 package crazy8;
 
-//import java.util.ArrayList;
 import java.util.*;
 import java.lang.Math;
 
 public class Deck {
-
-   final int TOTAL_CARDS = 52; 
+    final int TOTAL_CARDS = 52; 
    private ArrayList<ArrayList<String>> deckList = new ArrayList<>();
    //public static double random( );  
 
@@ -54,5 +52,4 @@ public class Deck {
    public void displayDeck() {
       System.out.println(deckList); 
    }
-
 }
