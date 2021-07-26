@@ -7,7 +7,7 @@ import java.lang.Math;
 public class Deck {
 
    final int TOTAL_CARDS = 52; 
-   public ArrayList<ArrayList<String>> deckList = new ArrayList<>();
+   private ArrayList<ArrayList<String>> deckList = new ArrayList<>();
    //public static double random( );  
 
    public Deck () {

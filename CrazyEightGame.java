@@ -44,7 +44,7 @@ public class CrazyEightGame {
         String[] splitCurrent; 
         String playedCard;
         Boolean overDraw = false;
-
+        int roundNum = 0;
 
         while (roundOn){ 
              
@@ -114,7 +114,7 @@ public class CrazyEightGame {
                 }
                 
                 if (players[currentPlayerNum].getCardListLength() == 0){
-                    //System.out.print("\033[H\033[2J");  
+                    System.out.print("\033[H\033[2J");  
                     roundOn = false; 
                     break;
                 }
@@ -122,8 +122,10 @@ public class CrazyEightGame {
             }
 
             currentPlayerNum = 0; 
-            //System.out.print("\033[H\033[2J"); 
-            System.out.println("\n\nRound is completed: " + (turnNum + 1)); 
+            roundNum++;
+            System.out.print("\033[H\033[2J"); 
+            System.out.println("\n\nRound is completed: " + (roundNum + 1)); 
+             
 
             //roundOn = false;
         }

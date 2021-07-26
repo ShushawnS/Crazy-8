@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Player { 
     private int playerNum;
     private String playerName;
-    public ArrayList<String> cardList = new ArrayList<>();
+    private ArrayList<String> cardList = new ArrayList<>();
 
     public Player (int y) {
         //System.out.print("I am player" + y);
