@@ -1,5 +1,4 @@
 package crazy8;
-import java.util.*;
 
 public class CrazyEightGame {
     public static void main (String[] args) {
